@@ -1,0 +1,3 @@
+'24.12.03 : RoArm-M2-S 구매 ('24.12.24 도착예정)
+'24.12.10 : ROS2 Reviews
+'24.12.17 : Installation
