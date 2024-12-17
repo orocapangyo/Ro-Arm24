@@ -1,0 +1,42 @@
+-------------------------------------128 서비스~130 서비스 형태확인
+ros2 service list
+ros2 service type
+ros2 service list -t
+ros2 service find std_srvs/srv/Empty
+ros2 service find turtlesim/srv/Kill
+
+
+-------------------------------------131 서비스 찾기 ~ 136 서비스 요청
+ros2 service call /clear std_srvs/srv/Empty
+			>>>>>>>	경로지워짐
+	
+ros2 service call /kill turtlesim/srv/Kill "name:'turtle1'"
+			>>>>>>> turtle1 없어짐
+	
+ros2 service call /reset std_srvs/srv/Empty
+			>>>>>>> turtle1 다시 나타남
+	
+ros2 service call /turtle1/set_pen turtlesim/srv/SetPen "{r: 255, g: 255, b: 255, width: 10}"
+			>>>>>>> 경로표시 선 색상/두께변경
+	
+ros2 service call /kill turtlesim/srv/Kill "name: 'turtle1'"
+			>>>>>>> turtle1 없앰
+	
+ros2 service call /spawn turtlesim/srv/Spawn "{x: 5.5, y: 9, theta: 1.57, name: 'leonardo'}"
+			>>>>>>> leonardo 등장
+			        leonardo에 대한 topic들 리스트 확인
+	
+ros2 service call /spawn turtlesim/srv/Spawn "{x: 5.5, y: 7, theta: 1.57, name: 'raffaello'}"
+			>>>>>>> raffaelo 등장
+				leonardo에 대한 topic들 리스트 확인
+	
+ros2 run turtlesim turtlesim_teleop_key --ros-args --remap turtle1/cmd_vel:=leonardo/cmd_vel
+			>>>>>>> teleop 실행 (단, turtle1없으니까 remap해야됨)
+	
+
+
+-------------------------------------137 서비스 인터페이스
+ros2 interface show turtlesim/srv/Spawn
+	########################################
+	슬라이드에서는 Spawn.srv인데 에러남
+	########################################

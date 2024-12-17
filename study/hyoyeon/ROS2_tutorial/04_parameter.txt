@@ -1,0 +1,59 @@
+-------------------------------------152 Parameter ~154 param 목록확인
+ros2 parameter list
+			>>>>>>> /teleop_turtle:
+					scale_angular
+					scale_linear
+					use_sim_time
+				/turtlesim:
+					background_b
+					background_g
+					background_r
+					use_sim_time
+
+
+-------------------------------------155 Parameter 내용확인
+ros2 param describe /turtlesim backgound_b
+			>>>>>>> Parameter name: background_b
+  				Type: integer
+  				Description: Blue channel of the background color
+  				Constraints:
+    					Min value: 0
+    					Max value: 255
+    				Step: 1
+    				
+ros2 param describe /teleop_turtle scale_angular
+			>>>>>>> Parameter name: scale_angular
+				  Type: double
+				  Constraints:
+
+
+-------------------------------------156 Parameter 읽기 ~ 157 Param 쓰기
+ros2 param get /turtlesim background_r 
+			>>>>>>> Integer value is: 69
+
+ros2 param set /turtlesim background_r 0
+	########################################
+	여기서 쓴 값들은 종료 후, 재시작 시 반영되지 않고 사라짐 
+	저장해야됨
+	########################################
+ 
+ 
+-------------------------------------158 Param 저장 & 재사용
+ros2 param dump /turtlesim > ./turtlesim.yaml
+vi ./turtlesim.yaml
+	########################################
+	첫줄에 /turtlesim -> turtlesim 변경 후 저장 
+	########################################
+	
+ros2 run turtlesim turtlesim_node -ros--args --params-file ./turtlesim.yaml\
+	########################################
+	저장한 변경사항이  배경색 에 반영됨
+	########################################
+	
+	
+-------------------------------------159 파라미터 삭제
+
+ros2 param delete /turtlesim background_b
+			>>>>>>> Deleting parameter failed: 
+				cannot undeclare an statically typed parameter
+

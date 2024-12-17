@@ -1,0 +1,33 @@
+-------------------------------------139 Action ~149 Action목표 전달
+ros2 action list -t
+			>>>>>>> /turtle1/rotate_absolute [turtlesim/action/RotateAbsolute]
+
+ros2 action info /turtle1/rotate_absolute 
+			>>>>>>> Action: /turtle1/rotate_absolute
+				Action clients: 1
+				    /teleop_turtle
+				Action servers: 1
+				    /turtlesim
+
+	########################################
+	원격제어기 (액션 client)가 목표하는 회전각도 보냄
+	turtlesim (액션 server)가 목표요청 받고, 
+	수행하는 와중에 feedback 주기적으로 보냄
+	########################################
+
+ros2 action send_goal /turtle1/rotate_absolute turtlesim/action/RotateAbsolute "{theta: 1.5708}"
+
+ros2 action send_goal /turtle1/rotate_absolute turtlesim/action/RotateAbsolute "{theta: -1.5708}" --feedback
+
+
+
+-------------------------------------150 Action Interface
+ros2 interface show turtlesim/action/RotateAbsolute
+			>>>>>>> float32 theta
+				---
+				# The angular displacement in radians to the starting position
+				float32 delta
+				---
+				# The remaining rotation in radians
+				float32 remaining
+

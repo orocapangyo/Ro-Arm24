@@ -1,0 +1,92 @@
+-------------------------------------086. Turtlesim 패키지 설치와 노드
+ros2 pkg list
+ros2 pkg executables turtlesim
+ros2 node list
+ros2 topic list
+
+
+-------------------------------------097 메시지 통신테스트
+ros2 run turtlesim turtlesim_node
+ros2 run turtlesim turtle_teleop_key
+ros2 node list
+ros2 run turtlesim turtlesim_node __node:=new_turtle
+ros2 node list
+ros2 node info /teleop_turtle
+
+
+------------------------------------103 토픽 ~ 112 토픽 지연시간 확인
+ros2 run turtlesim turtlesim_node
+ros2 node info /turtlesim
+ros2 topic list -t
+ros2 run turtlesim turtle_teleop_key
+ros2 topic info /turtle1/cmd_vel
+ros2 topic echo /turtle1/cmd_vel간
+ros2 topic bw /turtle1/cmd_vel	
+ros2 topic hz /turtle1/cmd_vel	
+ros2 topic delay /turtle1/cmd_vel
+	########################################
+	delay관련한 확인이 되는 header포함된 msg가 따로있는가봄
+		msg does not have header
+	########################################
+
+
+------------------------------------104 토픽발행 
+ros2 topic pub --once /turtle1/cmd_vel geometry_msgs/msg/Twist "{linear: {x: 2.0,y: 0.0,z: 0.0},angular: {x: 0.0,y: 0.0,z: 1.8}}"
+
+ros2 topic pub --rate 1 /turtle1/cmd_vel geometry_msgs/msg/Twist "{linear:{x: 2.0,y: 0.0,z: 0.0},angular:{x: 0.0,y: 0.0,z: 1.8}}"
+
+
+------------------------------------105 bag 기록 ~ 107 bag 재생
+ros2 bag record /turtle1/cmd_vel
+ros2 bag info rosbag2_2024_12_16-15_50_40
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	Files:             rosbag2_2024_12_16-15_50_40_0.db3
+	Bag size:          33.3 KiB
+	Storage id:        sqlite3
+	Duration:          71.999914837s
+	Start:             Dec 16 2024 15:50:41.396906985 (1734331841.396906985)
+	End:               Dec 16 2024 15:51:53.396821822 (1734331913.396821822)
+	Messages:          73
+	Topic information: Topic: /turtle1/cmd_vel | Type: geometry_msgs/msg/Twist | Count: 73 | Serialization Format: cdr
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	
+ros2 bag play rosbag2_2024_12_16-15_50_40_0.db3
+	##########################################
+	cmd_vel 회전하도록 발행하던 토픽 멈추고, 
+	turtlesim_node 실행된 상태에서 play해야됨
+	##########################################
+
+	
+------------------------------------118 Interface ~ 125 Interface 명령어
+ros2 interface show geometry_msgs/msg/Twist
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	# This expresses velocity in free space broken into its linear and angular parts.
+
+	Vector3  linear
+		float64 x
+		float64 y
+		float64 z
+	Vector3  angular
+		float64 x
+		float64 y
+		float64 z
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+ros2 interface show geometry_msgs/msg/Vctor3
+
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	# This represents a vector in free space.
+	
+	# This is semantically different than a point.
+	# A vector is always anchored at the origin.
+	# When a transform is applied to a vector, only the rotational component is applied.
+	
+	float64 x
+	float64 y
+	float64 z
+
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ros2 interface list
+ros2 interface packages
+ros2 interface package turtlesim
+ros2 interface proto geometry_msgs/msg/Twist 
