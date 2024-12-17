@@ -14,17 +14,17 @@ ros2 parameter list
 -------------------------------------155 Parameter 내용확인
 ros2 param describe /turtlesim backgound_b
 			>>>>>>> Parameter name: background_b
-  				Type: integer
-  				Description: Blue channel of the background color
-  				Constraints:
-    					Min value: 0
-    					Max value: 255
+					Type: integer
+					Description: Blue channel of the background color
+					Constraints:
+							Min value: 0
+							Max value: 255
     				Step: 1
     				
 ros2 param describe /teleop_turtle scale_angular
 			>>>>>>> Parameter name: scale_angular
-				  Type: double
-				  Constraints:
+					Type: double
+					Constraints:
 
 
 -------------------------------------156 Parameter 읽기 ~ 157 Param 쓰기
@@ -55,5 +55,5 @@ ros2 run turtlesim turtlesim_node -ros--args --params-file ./turtlesim.yaml\
 
 ros2 param delete /turtlesim background_b
 			>>>>>>> Deleting parameter failed: 
-				cannot undeclare an statically typed parameter
+					cannot undeclare an statically typed parameter
 
