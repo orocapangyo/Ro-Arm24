@@ -1,0 +1,114 @@
+-------------------------------------165~167 도구 : CLI형태
+ros2 run turtlesim turtlesim_node
+			>>>>>>> 특정패키지의 특정노드 1개 실행
+
+ros2 launch demo_nodes_cpp talker_listener.launch.py 
+			>>>>>>> 특정패키지의 런치파일 실행 1개 이상 노드 복수실행
+			
+			
+		
+-------------------------------------168 CLI 정보 명령어-pkg/node/topic/service/action
+##############
+# package    #
+##############
+
+ros2 pkg create pkgName
+ros2 pkg executables
+ros2 pkg list
+ros2 pkg prefix turtlesim
+			>>>>>>> /opt/ros/humble
+ros2 pkg xml turtlesim
+
+
+##############
+# node       #
+##############
+ros2 node list
+			>>>>>>> /turtlesim
+ros2 node info /turtlesim
+			>>>>>>> /turtlesim
+              Subscribers:
+                /parameter_events: rcl_interfaces/msg/ParameterEvent
+                /turtle1/cmd_vel: geometry_msgs/msg/Twist
+              Publishers:
+                /parameter_events: rcl_interfaces/msg/ParameterEvent
+                /rosout: rcl_interfaces/msg/Log
+                /turtle1/color_sensor: turtlesim/msg/Color
+                /turtle1/pose: turtlesim/msg/Pose
+              Service Servers:
+                /clear: std_srvs/srv/Empty
+                /kill: turtlesim/srv/Kill
+                /reset: std_srvs/srv/Empty
+                /spawn: turtlesim/srv/Spawn
+                /turtle1/set_pen: turtlesim/srv/SetPen
+                /turtle1/teleport_absolute: turtlesim/srv/TeleportAbsolute
+                /turtle1/teleport_relative: turtlesim/srv/TeleportRelative
+                /turtlesim/describe_parameters: rcl_interfaces/srv/DescribeParameters
+                /turtlesim/get_parameter_types: rcl_interfaces/srv/GetParameterTypes
+                /turtlesim/get_parameters: rcl_interfaces/srv/GetParameters
+                /turtlesim/list_parameters: rcl_interfaces/srv/ListParameters
+                /turtlesim/set_parameters: rcl_interfaces/srv/SetParameters
+                /turtlesim/set_parameters_atomically: rcl_interfaces/srv/SetParametersAtomically
+              Service Clients:
+
+  Action Servers:
+    /turtle1/rotate_absolute: turtlesim/action/RotateAbsolute
+  Action Clients:
+
+
+
+##############
+#  topic     #
+##############
+ros2 topic {list, info, type, find}
+ros2 topic {pub, echo}
+ros2 topic {bw, hz, delay}
+
+
+##############
+#  service   #
+##############
+ros2 service {list, type, find}
+ros2 service call
+
+##############
+#  action    #
+##############
+ros2 action {list, info}
+ros2 action send_goal
+
+
+
+
+-------------------------------------169 CLI 정보 명령어-interface, param, bag
+##############
+# interface  #
+##############
+ros2 interface {list, show}
+ros2 interface package turtlesim
+ros2 interface packages
+ros2 interface proto std_msgs/msg/ColorRGBA 
+			>>>>>>>  "r: 0.0
+                g: 0.0
+                b: 0.0
+                a: 0.0
+                "
+              "
+
+
+##############
+# param      #
+##############
+ros2 param {list, get, set, dump}
+ros2 param {delete, describe}
+
+
+
+##############
+# bag        #
+##############
+ros2 bag {info, play, record} 
+
+
+
+-------------------------------------170~173 CLI 기능 보조 명령어 (skip)
