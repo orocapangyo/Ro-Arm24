@@ -1,0 +1,35 @@
+
+
+1. COM3 연결
+	> python CmdSerial.py COM3     COM3 연결
+
+	참고) python 코드로 실행하는 방법 : (아래 규칙으로 호출)
+	"http://" + ip_addr + "/js?json=" + command  
+
+2. HTTP 연결 (192.168.0.79)
+
+	1) 윈도우 cmd창에서 간단한 확인 방법 : 
+		> curl -v -X GET "http://192.168.0.79/js?json={\"T\":405\}"
+
+	2) python 으로 연결
+		> python CmdHttp.py 192.168.0.79  실행하고, json명령어를 넣는다.
+
+
+3. JSON CMD 참고 정보
+
+	Wifi 정보 출력
+	{"T":405}
+
+
+	시리얼 디버깅을 위한 feedback 출력
+	{"T":605,"cmd":1}
+	{"T":605,"cmd":0}
+
+
+	AP+STA 모드 변경 명령 : {"T":404,"ap_ssid":"RoArm-M2","ap_password":"12345678","sta_ssid":"ubisam","sta_password":"xxxxxxxxx"}
+
+		참고) LCD에 표시되는 IP 확인 후 접근 << AP모드도 IP가 변경됨.
+
+		현재 설정값: 
+		{"ip":"192.168.0.79","rssi":-47,"wifi_mode_on_boot":3,"sta_ssid":"ubisam","sta_password":"xxxxxxxxx","ap_ssid":"RoArm-M2","ap_password":"12345678"}
+

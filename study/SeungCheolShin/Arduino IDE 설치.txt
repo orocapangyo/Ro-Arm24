@@ -1,0 +1,32 @@
+1. IDE 설치
+	arduino-ide_2.3.4_Windows_64bit.exe 실행
+
+	기본 설치 경로
+	*프로그램 : C:\Users\user\AppData\Local\Programs\Arduino IDE
+	*데이터 : C:\Users\user\AppData\Local\Arduino15
+
+	(주의) 설치하는 과정에서 board package, library를 new version으로 update 하지 말것.
+
+2. 패키지 다운로드 및 설정
+
+	1) 보드 매니저 URL 지정
+
+		File > Preference ... > Additional Board Manager URLs에 아래 값을 추가한다.
+
+		https://dl.espressif.com/dl/package_esp32_index.json
+
+
+	2) ESP32 development package 복사
+
+		esp32-2.0.11.zip 파일의 esp32폴더를 복사한다.
+		C:\Users\user\AppData\Local\Arduino15\packages\esp32 
+
+	3) Dependency Library 복사
+	
+		Libraries.zip 파일의 Libraries 폴더를 복사한다.
+		C:\Users\user\AppData\Local\Arduino15\libraries
+
+3. 예제 파일
+	RoArm-M2-S_example.zip 파일 압축 해제.
+
+	ino 파일이 존재하는 폴더 이름을 RoArm-M2_example 로 변경 필요. (IDE에서 프로젝트 이름으로 복사됨.)
