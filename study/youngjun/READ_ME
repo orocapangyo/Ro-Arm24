@@ -1,0 +1,39 @@
+라즈베리 파이 카메라 영상을 ros2 토픽으로 발행
+	sudo apt install ros-<ros-version>-cv-bridge #예시 sudo apt install ros-jazzy-cv-bridge
+	디렉토리 만들고 프로그램 복사 붙여넣기 #예시 mkdir ros_cam
+
+메인 컴퓨터에서 진행
+	모듈 설치
+		sudo apt install ros-<ros-version>-cv-bridge #예시 sudo apt install ros-humble-cv-bridge
+		pip install mediapipe
+		pip install opencv-python
+		
+	프로그램 세팅
+		#/roarm_ws_em0 디렉토리 안에서 진행
+		cd src/
+		ros2 pkg create --build-type ament_python --license Apache-2.0 --node-name face_tracking roarm_cam
+		cd roarm_cam/roarm_cam/
+		face_tracking.py 붙여넣기
+
+	package.xml 편집 #디펜던시 추가 
+		  <license>Apache-2.0</license> 밑에
+
+		  <exec_depend>rclpy</exec_depend>
+		  <exec_depend>sensor_msgs</exec_depend>
+		  <exec_depend>control_msgs</exec_depend>
+		  
+		  세 줄 추가하기
+		
+	roarm_ws_em0 이동 후
+		colcon build --packages-select roarm_cam
+		source install/local_setup.bash
+테스트
+	라즈베리파이에서 파이썬 프로그램 실행
+	cam2ros.py 
+	메인 컴퓨터에서 파이썬 프로그램 실행 #같은 roarm_ws_em0디렉토리에서 터미널만 분리
+	ros2 run roarm_driver roarm_driver        		     #터미널 1
+	ros2 launch moveit_servo demo             		     #터미널 2
+	ros2 run roarm_cam face_tracking          		     #터미널 3
+	rqt #plugins -> visualize -> image view -> /camera_image 선택 #터미널 4
+	
+	
