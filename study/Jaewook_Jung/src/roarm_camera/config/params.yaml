@@ -1,0 +1,25 @@
+roarm_camera_node:
+  ros__parameters:
+    image_width: 640   #640, 480, 480, 600
+    image_height: 480  #480, 360, 480, 400
+    visualize: true
+    camera_name: camera
+    device: /dev/video8
+    exposure: 80      # 166, 100, 80, 0
+    camera_matrix:
+      rows: 3
+      cols: 3
+      data: [312.2207852411451, 0.0, 313.4615912916478, 0.0, 311.44557935839043, 240.8622709895311, 0.0, 0.0, 1.0]
+    distortion_model: plumb_bob
+    distortion_coefficients:
+      rows: 1
+      cols: 5
+      data: [-0.07592821431824798, 0.029301958762373768, 0.0011085458371858205, 0.0023946286011274943, 0.0]
+    rectification_matrix:
+      rows: 3
+      cols: 3
+      data: [1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0]
+    projection_matrix:
+      rows: 3
+      cols: 4
+      data: [299.12725830078125, 0.0, 316.15359727066243, 0.0, 0.0, 299.6060485839844, 241.2363378418795, 0.0, 0.0, 0.0, 1.0, 0.0]
