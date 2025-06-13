@@ -66,6 +66,8 @@ cd ~/roarm_ws_em0
 . build_common.sh
 ```
 
+---
+
 ### 8. Launch the interact launch file
 
 ```bash
