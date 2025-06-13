@@ -66,12 +66,8 @@ cd ~/roarm_ws_em0
 . build_common.sh
 ```
 
-Then, to launch the interactive interface:
+### 8. Launch the interact launch file
 
 ```bash
 ros2 launch roarm_moveit interact.launch.py
 ```
-
----
-
-Happy Developing! 🤖
