@@ -47,14 +47,20 @@ yolo detect train \
   batch=16
 ```
 
-- Replace `yolov8n.pt` with `yolov8s.pt`, `yolov8m.pt`, etc., if preferred
-
 #### 5. Run YOLOv8 in ROS 2 with Trained Weights
 
 ```bash
 ros2 launch yolo_bringup yolov8.launch.py \
   model:=/home/hankyukim/ros2_ws/src/yolov8_ros/dataset/my_dataset/runs/detect/train6/weights/best.pt
 ```
+
+Make sure you launch the camera node too.
+
+```bash
+ros2 launch usb_cam camera.launch.py
+```
+
+You may need to adjust yolo bringup launch file to unify image topic name.
 
 🔗 [Roboflow](https://roboflow.com)  
 🔗 [Ultralytics YOLOv8 Docs](https://docs.ultralytics.com)
